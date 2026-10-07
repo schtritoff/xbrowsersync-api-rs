@@ -1,10 +1,22 @@
 # xbrowsersync-api-rs
 
-xBrowserSync API in Rust + SQLite.
+xBrowserSync API in Rust + SQLite. Repo: https://github.com/schtritoff/xbrowsersync-api-rs
 
-Rust rewrite of the xBrowserSync REST API (`xbrowsersync/api` v1.1.13 wire contract), backed by a single SQLite file. Drop-in replacement for the MarkSync / xBrowserSync browser extension clients.
+Rust rewrite of the xBrowserSync REST API (`xbrowsersync/api` v1.1.13 wire contract), backed by a single SQLite file. Drop-in replacement for the MarkSync / xBrowserSync browser extension clients. Tested and running in production with the MarkSync browser extension.
 
-Status: functional core (all 7 legacy-e2e-derived integration tests + unit tests green; MarkSync contract suite is the final acceptance gate - see "Contract testing").
+Status: all integration tests + unit tests green; verified against the MarkSync extension (create/update/conflict/read flows on a live instance — see "Contract testing").
+
+## Install with Docker (easiest)
+
+The image is built automatically by GitHub Actions: [`ghcr.io/schtritoff/xbrowsersync-api-rs:latest`](https://github.com/schtritoff/xbrowsersync-api-rs/pkgs/container/xbrowsersync-api-rs).
+
+```
+docker run -d --name xbrowsersync-api-rs --restart unless-stopped \
+  -p 8080:8080 -v xbs-data:/data \
+  ghcr.io/schtritoff/xbrowsersync-api-rs:latest
+```
+
+Everything (DB at `/data/db/`, logs at `/data/logs/`, optional config `/data/config/settings.json`) lives in the one `xbs-data` volume. Or use `compose.yaml` (`docker compose up -d`).
 
 ## Why
 
