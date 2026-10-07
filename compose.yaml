@@ -1,0 +1,18 @@
+services:
+  xbrowsersync-api-rs:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      # one volume: data, logs and optional config all live under /data
+      - data:/data
+    environment:
+      XBSAPI_DB_PATH: /data/db/xbrowsersync.sqlite3
+      # XBSAPI_LOCATION: DE
+      # XBSAPI_STATUS_MESSAGE: Welcome to my xBrowserSync service!
+      # XBSAPI_DAILYNEWSYNCSLIMIT: 3
+      # XBSAPI_MAXSYNCS: 5242
+
+volumes:
+  data:

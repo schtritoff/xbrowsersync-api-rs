@@ -1,0 +1,29 @@
+{
+  "dbPath": "data/xbrowsersync.sqlite3",
+  "dailyNewSyncsLimit": 0,
+  "maxSyncs": 0,
+  "maxSyncSize": 512000,
+  "purgeIntervalSeconds": 60,
+  "purgeStaleSyncsDays": 21,
+  "location": "",
+  "log": {
+    "stdout": {
+      "level": "info"
+    },
+    "file": {
+      "enabled": false,
+      "path": "logs/api.log"
+    }
+  },
+  "server": {
+    "behindProxy": false,
+    "host": "0.0.0.0",
+    "port": 8080,
+    "relativePath": "/"
+  },
+  "status": {
+    "allowNewSyncs": true,
+    "message": "",
+    "online": true
+  }
+}
